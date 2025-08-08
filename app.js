@@ -1,3 +1,4 @@
+// npm install express express-session pg passport passport-local ejs dotenv express-validator
 const path = require("node:path");
 const { Pool } = require("pg");
 const express = require("express");

@@ -5,7 +5,7 @@ async function addUser(fullname, username, password) {
       fullname,
       username,
       password
-    ]);
+    ])
 }
 
 module.exports = {

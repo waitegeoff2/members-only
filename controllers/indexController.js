@@ -6,7 +6,7 @@ const alphaErr = "must only contain letters.";
 const emptyErr = "is required"
 const lengthErr = "must be between 1 and 50 characters.";
 const emailErr = "must be formatted like an email.";
-const pwMatchErr = "Passwords entered must match"
+const pwMatchErr = "Passwords do not match"
 
 const validateUser = [
     body("fullname").trim()
@@ -22,7 +22,7 @@ const validateUser = [
         .notEmpty().withMessage('Confirm Password is required')
         .custom((value, { req }) => {
             if (value !== req.body.password) {
-                throw new Error('Passwords do not match');
+                throw new Error(`${pwMatchErr}`);
             }
             return true;
         }),

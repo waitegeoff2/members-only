@@ -1,20 +1,24 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Log in</title>
+  <title>Home</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1>hi</h1>
-  <!-- <h1>Sign Up</h1>
-  <form action="/sign-up" method="POST">
-    <label for="fullname">Full name</label>
-    <input id="fullname" name="fullname" placeholder="Full name" type="text" />
+  <!-- if the req.user is sent (user is logged in) shows message, if not, log in screen -->
+   <% if (locals.user) {%>
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+  <% } else { %>
+  <h1>Log in to the club</h1>
+  <form action="/log-in" method="POST">
     <label for="username">Username</label>
-    <input id="username" name="username" placeholder="username" type="text" />
+    <input id="username" name="username" placeholder="Your email" type="text" />
     <label for="password">Password</label>
     <input id="password" name="password" type="password" />
-    <button type="submit">Sign Up</button>
-  </form> -->
+    <button type="submit">Log In</button>
+  </form>
+  <%}%>
 </body>
 </html>

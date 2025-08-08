@@ -19,7 +19,7 @@ const validateUser = [
     .notEmpty().withMessage(`Password ${emptyErr}`)
     .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long'),
     body('confirmpassword')
-        .notEmpty().withMessage('Confirm Password is required')
+        .notEmpty().withMessage(`Confirm Password ${lengthErr}`)
         .custom((value, { req }) => {
             if (value !== req.body.password) {
                 throw new Error(`${pwMatchErr}`);
@@ -31,6 +31,7 @@ const validateUser = [
 const addUser = [
 validateUser,
 async(req, res, next) => {
+//display errors if any
 const errors = validationResult(req)
     if (!errors.isEmpty()) {
       return res.status(400).render("sign-up-form", {
@@ -38,6 +39,7 @@ const errors = validationResult(req)
       });
     }
 
+//if valid, put values into db
 try {
     console.log(req.body)
     const fullName = req.body.fullname;

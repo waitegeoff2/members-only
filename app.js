@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
+//session/passport
 app.use(session({ secret: "dog", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
@@ -77,10 +78,8 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-//middleware to call currentUser in views to render the current user
-//If you insert this code somewhere between where you instantiate the passport middleware 
-// and before you render your views, you will have access to the currentUser variable in all of your views, 
-// and you won’t have to manually pass it into all of the controllers in which you need it.
+//CURRENTUSER middleware: to allow access to currentUser in views to render the current user without having to pass it in
+// insert this code somewhere between where you instantiate the passport middleware 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();

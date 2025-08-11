@@ -69,7 +69,18 @@ async function updateMember(req, res) {
     //update membership status in db
 }
 
+async function postMessage(req, res) {
+    console.log(req.body)
+    //passed in message and user id
+    //add into db with this id
+
+    res.redirect('/')
+    //update message in db
+    //redirect to home page (where it will show messages)
+}
+
 module.exports = {
     addUser,
-    updateMember
+    updateMember,
+    postMessage
 }

@@ -34,6 +34,6 @@ indexRouter.post('/join', indexController.updateMember) //indexcontroller update
 //post message
 indexRouter.get('/new-message', (req, res) => res.render ('new-message'))
 // indexRouter.get('/new-message/:userId', (req, res) => res.render ('new-message', { user: req.user }))
-// indexRouter.post('/new-message', )
+indexRouter.post('/new-message', indexController.postMessage)
 
 module.exports = indexRouter;

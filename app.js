@@ -11,11 +11,6 @@ const bcrypt = require("bcryptjs");
 const indexRouter = require("./routes/indexRouter")
 require('dotenv').config();
 
-
-//view library
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
 //this allows the app to parse form data into req.
 app.use(express.urlencoded({ extended: true }));
 
@@ -27,8 +22,9 @@ app.use(session({ secret: "dog", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-//router
-app.use("/", indexRouter);
+//view library
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 //PASSPORT PASSWORD/COOKIE FUNCTIONS (UPDATE)
 //match un and pw
@@ -80,6 +76,18 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
+
+//middleware to call currentUser in views to render the current user
+//If you insert this code somewhere between where you instantiate the passport middleware 
+// and before you render your views, you will have access to the currentUser variable in all of your views, 
+// and you won’t have to manually pass it into all of the controllers in which you need it.
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+//router
+app.use("/", indexRouter);
 
 
 const PORT = 3000;

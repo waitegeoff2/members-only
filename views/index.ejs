@@ -8,6 +8,7 @@
 <body>
    <% if (locals.user) {%>
     <h1>Welcome back <%= user.fullname %></h1>
+    <a href="/new-message">Post a message please!</a>
     <a href="/log-out">Log out</a>
   <% } else { %>
   <h1>Log in to the club</h1>

@@ -17,6 +17,10 @@ async function getMessages() {
     return rows;
 }
 
+async function getUser(messageId) {
+    //take user id and return the username using inner join with users table
+}
+
 async function postMessage(id, title, message) {
     await pool.query("INSERT INTO messages (user_id, title, text) VALUES ($1, $2, $3)", [id, title, message])
 }

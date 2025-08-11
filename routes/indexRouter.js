@@ -4,7 +4,7 @@ const indexController = require("../controllers/indexController")
 const passport = require("passport");
 
 //home page
-indexRouter.get('/', (req, res) => res.render('index', { user: req.user }))
+indexRouter.get('/', indexController.generateIndex)
 indexRouter.post(
       "/log-in",
   passport.authenticate("local", {

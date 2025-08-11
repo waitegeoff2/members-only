@@ -21,6 +21,17 @@
   </form>
   <a href="/sign-up">Become a member.</a>
   <%}%>
+  <ul class="message-list"></ul>
+  <% messages.forEach((message) => { %>
+    <li>
+        <div class="message-block">
+            <span><b>User:</b> <%= message.title %></span>
+            <span><b>Message:</b> <%= message.message %></span>
+            <span><b>Date sent:</b> <%= message.time_stamp %></span>
+        </div>
+    </li>
+  <% }) %>
+  </ul>
   
 </body>
 </html>

@@ -58,12 +58,13 @@ try {
 async function generateIndex(req, res) {
     //generates the index page but also grabs the messages from the db
     const messages = await db.getMessages();
+    console.log(messages)
 
     //get message user
     //await db.getuser (select on inner join messages users)
 
     //await db.getmessages
-    res.render('index', { user: req.user, messages: messages, userName: userName })
+    res.render('index', { user: req.user, messages: messages })
 }
 
 async function updateMember(req, res) {
@@ -96,5 +97,6 @@ async function postMessage(req, res) {
 module.exports = {
     addUser,
     updateMember,
-    postMessage
+    postMessage,
+    generateIndex
 }

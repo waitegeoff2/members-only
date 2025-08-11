@@ -42,11 +42,12 @@ const errors = validationResult(req)
 //if valid, put values into db
 try {
     console.log(req.body)
+    const user = req.body;
     const fullName = req.body.fullname;
     const userName = req.body.username;
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     await db.addUser(fullName, userName, hashedPassword);
-    res.redirect('/')
+    res.render('join', { userName: userName })
 } catch(error){
     console.error(error);
     next(error);
@@ -54,6 +55,21 @@ try {
 }
 ]
 
+async function updateMember(req, res) {
+    // if req.body is the right password:
+    const username = req.body.hiddenUser
+    console.log(req.body.hiddenUser)
+    const secret = req.body.secret;
+    if(secret.toLowerCase() == 'password') {
+        await db.addMember(username);
+        res.redirect('/')
+    } else {
+        res.render('join', {userName: username});
+    }
+    //update membership status in db
+}
+
 module.exports = {
     addUser,
+    updateMember
 }

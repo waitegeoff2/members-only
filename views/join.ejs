@@ -1,0 +1,18 @@
+<!-- Page to enter secret password to join club -->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Secret Page</h1>
+  <form action="/join" method="POST">
+    <label for="secret">Enter secret password to join the club:</label>
+    <input id="secret" name="secret" placeholder="The password is password" type="text" />
+    <input type="hidden" name="hiddenUser" value="<%= userName %>">
+    <button type="submit">Enter</button>
+  </form>
+</body>
+</html>

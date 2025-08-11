@@ -8,6 +8,11 @@ async function addUser(fullname, username, password) {
     ])
 }
 
+async function addMember(username) {
+    await pool.query("UPDATE users SET membership='y' WHERE username=$1", [username])
+}
+
 module.exports = {
     addUser,
+    addMember
 }

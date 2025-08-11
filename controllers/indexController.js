@@ -55,6 +55,17 @@ try {
 }
 ]
 
+async function generateIndex(req, res) {
+    //generates the index page but also grabs the messages from the db
+    const messages = await db.getMessages();
+
+    //get message user
+    //await db.getuser (select on inner join messages users)
+
+    //await db.getmessages
+    res.render('index', { user: req.user, messages: messages, userName: userName })
+}
+
 async function updateMember(req, res) {
     // if req.body is the right password:
     const username = req.body.hiddenUser
@@ -71,8 +82,11 @@ async function updateMember(req, res) {
 
 async function postMessage(req, res) {
     console.log(req.body)
+    const id = req.body.userInfo;
+    const title = req.body.title;
+    const message = req.body.message;
     //passed in message and user id
-    //add into db with this id
+    await db.postMessage(id, title, message)
 
     res.redirect('/')
     //update message in db

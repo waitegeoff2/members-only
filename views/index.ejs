@@ -6,10 +6,9 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- if the req.user is sent (user is logged in) shows message, if not, log in screen -->
    <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
+    <h1>Welcome back <%= user.fullname %></h1>
+    <a href="/log-out">Log out</a>
   <% } else { %>
   <h1>Log in to the club</h1>
   <form action="/log-in" method="POST">
@@ -19,6 +18,7 @@
     <input id="password" name="password" type="password" />
     <button type="submit">Log In</button>
   </form>
+  <a href="/sign-up">Become a member.</a>
   <%}%>
 </body>
 </html>

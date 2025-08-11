@@ -1,6 +1,7 @@
 // npm install express express-session pg passport passport-local ejs dotenv express-validator
 const path = require("node:path");
 const { Pool } = require("pg");
+const pool = require("./db/pool")
 const express = require("express");
 const app = express();
 const session = require("express-session");
@@ -43,9 +44,12 @@ passport.use(
     }
     if (!match) {
         // passwords do not match!
+        console.log("wrong password!")
         return done(null, false, { message: "Incorrect password" })
     }
     //if successful, return the user
+        console.log('logged in!')
+        console.log(user)
       return done(null, user);
     } catch(err) {
       return done(err);

@@ -1,10 +1,17 @@
 const { Router } = require("express");
 const indexRouter = Router();
 const indexController = require("../controllers/indexController")
+const passport = require("passport");
 
 //home page
-indexRouter.get('/', (req, res) => res.render('index'))
-// indexRouter.post('/log-in', res.end()) //log user in here
+indexRouter.get('/', (req, res) => res.render('index', { user: req.user }))
+indexRouter.post(
+      "/log-in",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/"
+  })
+);
 
 //sign up form
 indexRouter.get('/sign-up', (req, res) => res.render('sign-up-form'))

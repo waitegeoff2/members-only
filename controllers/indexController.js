@@ -2,7 +2,6 @@ const db = require("../db/queries")
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
-const alphaErr = "must only contain letters.";
 const emptyErr = "is required"
 const lengthErr = "must be between 1 and 50 characters.";
 const emailErr = "must be formatted like an email.";
@@ -41,7 +40,6 @@ const errors = validationResult(req)
 
 //if valid, put values into db
 try {
-    console.log(req.body)
     const user = req.body;
     const fullName = req.body.fullname;
     const userName = req.body.username;
@@ -51,7 +49,6 @@ try {
     } else {
         admin = "false";
     }
-    console.log(admin)
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     await db.addUser(fullName, userName, hashedPassword, admin);
     res.render('join', { userName: userName })
@@ -70,8 +67,7 @@ async function generateIndex(req, res) {
 
 async function updateMember(req, res) {
     // if req.body is the right password:
-    const username = req.body.hiddenUser
-    console.log(req.body.hiddenUser)
+    const username = req.body.hiddenUser;
     const secret = req.body.secret;
     if(secret.toLowerCase() == 'password') {
         await db.addMember(username);
@@ -79,28 +75,23 @@ async function updateMember(req, res) {
     } else {
         res.render('join', {userName: username});
     }
-    //update membership status in db
 }
 
 async function postMessage(req, res) {
-    console.log(req.body)
     const username = req.body.username;
     const id = req.body.userInfo;
     const title = req.body.title;
     const message = req.body.message;
-    //passed in message and user id
     await db.postMessage(id, title, message)
 
     res.redirect('/')
-    //update message in db
-    //redirect to home page (where it will show messages)
+
 }
 
 async function deleteMessage(req, res) {
-    //await db. deletemessage
     const messageId = req.params.messageId;
     await db.removeMessage(messageId);
-    res.redirect('/')
+    res.redirect('/');
 }
 
 

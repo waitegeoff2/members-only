@@ -29,11 +29,10 @@ indexRouter.post('/sign-up', indexController.addUser)
 
 //join club
 indexRouter.get('/join', (req, res) => res.render('join'))
-indexRouter.post('/join', indexController.updateMember) //indexcontroller update membership
+indexRouter.post('/join', indexController.updateMember)
 
 //post message
 indexRouter.get('/new-message', (req, res) => res.render ('new-message'))
-// indexRouter.get('/new-message/:userId', (req, res) => res.render ('new-message', { user: req.user }))
 indexRouter.post('/new-message', indexController.postMessage)
 
 //delete message

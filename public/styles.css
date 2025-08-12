@@ -28,3 +28,24 @@
     list-style-type: none;
     padding: 3px;
 }
+
+/* sign up form */
+
+.sign-up-title {
+    display: flex;
+    justify-self: center  ;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    gap: 9px;
+    justify-self: center;
+    
+}
+
+.admin-check {
+    display: flex;
+    gap: 3px;
+}

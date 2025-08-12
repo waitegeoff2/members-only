@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS users (
    fullname VARCHAR ( 255 ),
    username VARCHAR ( 255 ),
    password VARCHAR ( 255 ),
-   membership VARCHAR ( 255 )
+   membership VARCHAR ( 255 ),
+   is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS messages (

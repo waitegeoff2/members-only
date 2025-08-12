@@ -94,9 +94,14 @@ async function postMessage(req, res) {
     //redirect to home page (where it will show messages)
 }
 
+async function deleteMessage(req, res) {
+    //await db. deletemessage
+}
+
 module.exports = {
     addUser,
     updateMember,
     postMessage,
-    generateIndex
+    generateIndex,
+    deleteMessage
 }

@@ -4,7 +4,6 @@
 </head>
 <body>
     <!-- currentUser is available because of the middleware added in app - it's taken from the cookie -->
-    <% console.log(currentUser) %>
    <h2><%= currentUser.fullname %>, post your message:</h2>
    <form class="new-message-form" method="POST" action="/new-message">
         <label for="title"><b>Title:</b></label>

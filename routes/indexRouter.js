@@ -37,6 +37,6 @@ indexRouter.get('/new-message', (req, res) => res.render ('new-message'))
 indexRouter.post('/new-message', indexController.postMessage)
 
 //delete message
-//indexRouter.get('/messages/:messageId', indexController.deleteMessage)
+indexRouter.get('/messages/:messageId', indexController.deleteMessage)
 
 module.exports = indexRouter;

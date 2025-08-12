@@ -17,8 +17,17 @@
         <input id="username" name="username" placeholder="username" type="email" />
     </div>
     <div class="admin-check">
-        <label for="admin">Is admin?</label>
-        <input type="checkbox" name="admin" id="admin">
+        <fieldset>
+            <legend>Is admin?</legend>
+            <div>
+                <input type="radio" id="yes" name="admin" value="yes">
+                <label for="yes">Yes</label>
+            </div>
+            <div>
+                <input type="radio" id="no" name="admin" value="no" checked>
+                <label for="no">No</label>
+            </div>
+        </fieldset>
     </div>
     <div class="form-section">
         <label for="password">Password</label>

@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <% console.trace(locals.user) %>
    <h1 class="index-title">Secret Club Messaging App</h1>
    <% if (locals.user) {%>
     <div class="member-header">
@@ -38,6 +39,7 @@
     <% if(messages[0]==null){%>
         <h3>No messages yet.</h3>
     <%} else messages.forEach((message) => { %>
+        <% console.trace(message) %>
         <li>
             <div class="message-block"> 
                 <% if(locals.user) { %>
@@ -50,6 +52,11 @@
                 <% if (locals.user) {%>
                     <% if (locals.user.membership == 'y') {%>
                     <span><b>Date sent:</b> <%= message.time_stamp %></span>
+                    <%}%>
+                <%}%>
+                <% if (locals.user) {%>
+                    <% if (locals.user.is_admin == true) {%>
+                <a href="/messages/<%= message.id %>"><b>Delete Message</b></a>
                     <%}%>
                 <%}%>
             </div>

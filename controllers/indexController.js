@@ -45,8 +45,15 @@ try {
     const user = req.body;
     const fullName = req.body.fullname;
     const userName = req.body.username;
+    let admin;
+    if(req.body.admin == 'yes') {
+        admin = "true";
+    } else {
+        admin = "false";
+    }
+    console.log(admin)
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await db.addUser(fullName, userName, hashedPassword);
+    await db.addUser(fullName, userName, hashedPassword, admin);
     res.render('join', { userName: userName })
 } catch(error){
     console.error(error);
@@ -58,11 +65,6 @@ try {
 async function generateIndex(req, res) {
     //generates the index page but also grabs the messages from the db
     const messages = await db.getMessages();
-
-    //get message user
-    //await db.getuser (select on inner join messages users)
-
-    //await db.getmessages
     res.render('index', { user: req.user, messages: messages })
 }
 
@@ -96,7 +98,11 @@ async function postMessage(req, res) {
 
 async function deleteMessage(req, res) {
     //await db. deletemessage
+    const messageId = req.params.messageId;
+    await db.removeMessage(messageId);
+    res.redirect('/')
 }
+
 
 module.exports = {
     addUser,

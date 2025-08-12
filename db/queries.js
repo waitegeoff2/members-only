@@ -13,7 +13,12 @@ async function addMember(username) {
 }
 
 async function getMessages() {
-    const { rows } = await pool.query("SELECT * FROM messages");
+    const { rows } = await pool.query(`
+        SELECT users.username, messages.title, messages.text, messages.time_stamp
+        FROM messages
+        INNER JOIN users
+        ON messages.user_id = users.id
+        `);
     return rows;
 }
 

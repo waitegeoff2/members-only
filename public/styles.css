@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.messages-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.message-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 5px;
+    align-items: center;
+}
+
+.message-block {
+    background-color: rgb(209, 238, 209);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 450px;
+    border-radius: 5px;
+    list-style-type: none;
+    padding: 3px;
+}

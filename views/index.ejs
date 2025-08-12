@@ -6,12 +6,13 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <h1>Secret Club Messaging App</h1>
    <% if (locals.user) {%>
-    <h1>Welcome back <%= user.fullname %></h1>
+    <h2>Welcome back, <%= user.fullname %></h2>
     <a href="/new-message">Post a message please!</a>
     <a href="/log-out">Log out</a>
   <% } else { %>
-  <h1>Log in to the club</h1>
+  <h2>Log in to the club</h2>
   <form action="/log-in" method="POST">
     <label for="username">Username</label>
     <input id="username" name="username" placeholder="Your email" type="text" />
@@ -21,17 +22,33 @@
   </form>
   <a href="/sign-up">Become a member.</a>
   <%}%>
-  <ul class="message-list"></ul>
-  <% messages.forEach((message) => { %>
-    <li>
-        <div class="message-block">
-            <span><b>User:</b> <%= message.title %></span>
-            <span><b>Message:</b> <%= message.message %></span>
-            <span><b>Date sent:</b> <%= message.time_stamp %></span>
-        </div>
-    </li>
-  <% }) %>
-  </ul>
+  <div class="messages-section">
+    <% if (locals.user) {%>
+    <h2>Messages</h2>
+    <% } else { %>
+    <h2>Messages (Log in for secret info)</h2>
+    <%}%>
+    <ul class="message-list">
+    <% messages.forEach((message) => { %>
+        <li>
+            <div class="message-block"> 
+                <% if(locals.user) { %>
+                    <% if (locals.user.membership == 'y') {%>
+                    <span><b>User:</b> <%= message.username %></span>
+                    <%}%>
+                <%}%>
+                <span><b>Title:</b> <%= message.title %></span>
+                <span><b>Message:</b> <%= message.text %></span>
+                <% if (locals.user) {%>
+                    <% if (locals.user.membership == 'y') {%>
+                    <span><b>Date sent:</b> <%= message.time_stamp %></span>
+                    <%}%>
+                <%}%>
+            </div>
+        </li>
+    <% }) %>
+    </ul>
+  </div>
   
 </body>
 </html>

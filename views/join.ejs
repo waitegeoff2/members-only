@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="secret-page">
   <h1>Secret Page</h1>
-  <form action="/join" method="POST">
-    <label for="secret">Enter secret password to join the club:</label>
-    <input id="secret" name="secret" placeholder="The password is password" type="text" />
-    <input type="hidden" name="hiddenUser" value="<%= userName %>">
-    <button type="submit">Enter</button>
-  </form>
-  <a href="/">I don't know it.</a>
+    <form action="/join" method="POST">
+        <label for="secret">Enter secret password to join the club:</label>
+        <input id="secret" name="secret" placeholder="The password is password" type="text" />
+        <input type="hidden" name="hiddenUser" value="<%= userName %>">
+        <button type="submit">Enter</button>
+    </form>
+    <a href="/">I don't know it.</a>
+</div>
 </body>
 </html>

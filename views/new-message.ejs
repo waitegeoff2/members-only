@@ -4,7 +4,7 @@
 </head>
 <body>
     <!-- currentUser is available because of the middleware added in app - it's taken from the cookie -->
-   <h2><%= currentUser.fullname %>, post your message:</h2>
+   <h2 class="message-title"><%= currentUser.fullname %>, post your message:</h2>
    <form class="new-message-form" method="POST" action="/new-message">
         <label for="title"><b>Title:</b></label>
         <input type="text" name="title" id="title" placeholder="Enter message here...">
@@ -13,6 +13,6 @@
         <input type="hidden" name="userInfo" value="<%= currentUser.id %>">
         <input type="submit" value="submit">
    </form>    
-   <a href="/">Back home</a>
+   <a class="home-btn" href="/">Back home</a>
 </body>
 </html>

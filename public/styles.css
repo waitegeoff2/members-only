@@ -3,6 +3,70 @@
     padding: 0;
 }
 
+body {
+    background-color: rgb(232, 247, 250);
+}
+
+/* index */
+
+.index-title {
+    display: flex;
+    justify-self: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    text-shadow: 5px 5px 5px rgb(186, 186, 186);
+    margin-bottom: 10px;
+}
+
+.member-header {
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: rgb(200, 250, 234);
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.member-btns {
+    display: flex;
+}
+
+.message-btn {
+    border: 1px solid black;
+    padding: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(169, 109, 109);
+    border-radius: 8px;
+    text-decoration : none;
+    font-weight: bold;
+    color:white;
+}
+
+.member-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.non-member-header {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+
+.log-in-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 5px;
+    background-color: rgb(200, 250, 234);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 .messages-section {
     display: flex;
     flex-direction: column;
